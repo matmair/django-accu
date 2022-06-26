@@ -1,1 +1,3 @@
 pre-commit                      # Git hooks
+pytest                          # Testing
+pytest-cov                      # And coverage
