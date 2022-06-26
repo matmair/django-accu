@@ -1,4 +1,4 @@
-# Django accu
+# Django Accu
 
 More batteries for Django - an opinionated package for creating a Django application faster.
 
