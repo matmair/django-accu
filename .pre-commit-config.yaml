@@ -1,49 +1,26 @@
-# See https://pre-commit.com/ for usage and config
 repos:
-- repo: local
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+  hooks:
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  - id: check-symlinks
+  - id: check-toml
+  - id: check-vcs-permalinks
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
   hooks:
   - id: isort
-    name: isort
-    stages: [commit]
-    language: system
-    entry: pipenv run isort
-    types: [python]
-
+    name: isort (python)
+- repo: https://github.com/psf/black
+  rev: 21.12b0
+  hooks:
   - id: black
-    name: black
-    stages: [commit]
-    language: system
-    entry: pipenv run black
-    types: [python]
-
+- repo: https://github.com/pycqa/flake8
+  rev: 4.0.1
+  hooks:
   - id: flake8
-    name: flake8
-    stages: [commit]
-    language: system
-    entry: pipenv run flake8
-    types: [python]
-    exclude: setup.py
-
-  - id: mypy
-    name: mypy
-    stages: [commit]
-    language: system
-    entry: pipenv run mypy
-    types: [python]
-    require_serial: true
-
-  - id: pytest
-    name: pytest
-    stages: [commit]
-    language: system
-    entry: pipenv run pytest
-    types: [python]
-    pass_filenames: false
-
-  - id: pytest-cov
-    name: pytest
-    stages: [push]
-    language: system
-    entry: pipenv run pytest --cov --cov-fail-under=100
-    types: [python]
-    pass_filenames: false
+    additional_dependencies:
+    - flake8-docstrings
+    - flake8-absolute-import
